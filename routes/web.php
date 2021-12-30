@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/login');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('product-variant', 'VariantController');
+    Route::resource('product', 'ProductController');
+    Route::resource('blog', 'BlogController');
+    Route::resource('blog-category', 'BlogCategoryController');
 });
