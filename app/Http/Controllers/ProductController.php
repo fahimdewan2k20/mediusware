@@ -84,6 +84,12 @@ class ProductController extends Controller
             'description' => $request->description
         ]);
 
+        // adding product image to product_images table
+        if($request->hasFile('file_name')){
+            $file_name = time()."_".$request->file('file_name')->getClientOriginalName();
+            $request->file('file_name')->storeAs('uploads', $file_name, 'public');
+        }
+
         $productVariantPrices = $request->product_variant_prices;
         if(count($productVariantPrices) == 0) {
             return ['success' => true];

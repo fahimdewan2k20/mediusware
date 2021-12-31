@@ -2110,6 +2110,7 @@ __webpack_require__.r(__webpack_exports__);
       };
       axios.post('/product', product).then(function (response) {
         console.log(response.data);
+        response.data.success ? alert('Product added successfully') : alert('Try a differest SKU');
       })["catch"](function (error) {
         console.log(error);
       });
