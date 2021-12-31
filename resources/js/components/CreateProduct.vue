@@ -191,10 +191,10 @@ export default {
 
             axios.post('/product', product).then(response => {
                 console.log(response.data);
+                response.data.success ? alert('Product added successfully') : alert('Try a differest SKU');
             }).catch(error => {
                 console.log(error);
             })
-
             console.log(product);
         }
 
